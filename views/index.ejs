@@ -6,17 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tic Tac Toe</title>
   <link rel="stylesheet" href="/style.css" type="text/css">
+  <script type="text/javascript" src="helpers.js"></script>
 </head>
 <body>
   <div class="container">
-    <script type="text/javascript" src="helpers.js"></script>
       <div class="game_board">
         <h1>Welcome to Tic-Tac-Toe!</h1>
+        <h4 id="turn_announcer"></h4>
         <div id="play_area" >
         </div>
         <h2 id="winner"></h2>
         <div class="buttons">
-          <button onClick="reset_board()">New Game!</button>
+          <button onclick="make_new_game()" >New Game!</button>
         </div>
       </div>  
     </div>

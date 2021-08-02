@@ -1,10 +1,12 @@
 
-/* Constand declarations */
+/* Constant declarations */
 let game_board = [null, null, null, null, null, null, null, null, null];
 let numTurnsLeft = 9;
 let bluesTurn = true;
 const playerOne = "BLUE";
 const playerTwo = "YELLOW";
+
+
 
 
 const check_three = (a, b, c) => {
@@ -46,18 +48,48 @@ const turnComplete = () => {
 const addPlayerMove = (selected) => {
   if (!game_board[selected]) {
     game_board[selected] = bluesTurn ? playerOne : playerTwo;
-    console.log(game_board);
     numTurnsLeft--;
     console.log(numTurnsLeft);
+  } else if (game_board[selected]) {
+      alert('Square has already been taken!')
+    }
     if (bluesTurn) {
       document.getElementById(`square_${selected}`).classList.add("playerOneSelect")
       bluesTurn = false;
+      document.getElementById('turn_announcer').innerText = "Yellow's turn!"
     } else {
       bluesTurn = true;
       document.getElementById(`square_${selected}`).classList.add("playerTwoSelect")
+      document.getElementById('turn_announcer').innerText = "Blue's turn!";
     }
-  }
   turnComplete();
+};
+
+const make_board = (game_container) => {
+  if (game_container.innerHTML) {
+    game_container.innerHTML = "";
+  }
+  game_board.forEach((element, index) => {
+    game_container.innerHTML += 
+    `<div id="square_${index}" class="game_square" onClick="addPlayerMove(${index})">
+    </div>`;
+    if (element == playerOne) {
+      document.getElementById(`square_${index}`).classList.add("playerOneSelect")
+    } else if (element == playerTwo) {
+      document.getElementById(`square_${index}`).classList.add("playerTwoSelect")
+    }
+  });
+};
+
+const reset_board = (game_container) => {
+  game_board = [null, null, null, null, null, null, null, null, null];
+  document.getElementById('winner').innerText = "";
+  make_board(game_container);
+};
+
+const make_new_game = () => {
+  const game_container = document.getElementById("play_area");
+  reset_board(game_container);
 };
 
 
@@ -65,41 +97,14 @@ const addPlayerMove = (selected) => {
 
 /* Window Onload Event! */
 window.onload = (event) => {
-  const game_container = document.getElementById("play_area");
-
-
-  const make_board = () => {
-    if (game_container.innerHTML) {
-      game_container.innerHTML = "";
-    }
-    game_board.forEach((element, index) => {
-      game_container.innerHTML += 
-      `<div id="square_${index}" class="game_square" onClick="addPlayerMove(${index})">
-        ${game_board[index]}
-      </div>`;
-      if (element == playerOne) {
-        document.getElementById(`square_${index}`).classList.add("playerOneSelect")
-      } else if (element == playerTwo) {
-        document.getElementById(`square_${index}`).classList.add("playerTwoSelect")
-      }
-    });
-  };
   
-  const reset_board = () => {
-    game_board = [null, null, null, null, null, null, null, null, null];
-    document.getElementById('winner').innerText = "";
-    // game_board.forEach((element, index) => {
-    //   game_container.innerHTML += 
-    //   `<div id="square_${index}" class="game_square" onClick="addPlayerMove(${index})">
-    //     ${game_board[index]}
-    //   </div>`;
-    // })};
-    make_board();
-  }
- 
+  const game_container = document.getElementById("play_area");
+  make_board(game_container);
+  document.getElementById('turn_announcer').innerText = "Blue's turn!";
 
-  make_board();
-};
+
+}; // End of onLoad
+
 
 
 
