@@ -1,15 +1,26 @@
+.game_board {
+  text-align: center;
+}
+
 .game_square {
-  height: 100px;
-  width: 100px;
+  height: 160px;
+  width: 160px;
   border: 1px solid black;
-};
+}
 
 .play_area {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
   height: 500px;
   width: 500px;
-};
+  margin: 0 auto;
+}
+
+
+
+
+
+
 
 
 
