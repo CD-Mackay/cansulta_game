@@ -8,7 +8,7 @@
   border: 1px solid black;
 }
 
-.play_area {
+#play_area {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   height: 500px;
