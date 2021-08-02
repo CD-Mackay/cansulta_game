@@ -1,3 +1,19 @@
-h1 {
-  color: red;
-}
+.game_square {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+};
+
+.play_area {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  height: 500px;
+  width: 500px;
+};
+
+
+
+
+
+
+
