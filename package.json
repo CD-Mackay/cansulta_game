@@ -1,0 +1,11 @@
+{
+  "name": "cansulta",
+  "version": "1.0.0",
+  "description": "tic-tac-toe game for Cansulta",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Connor Mackay",
+  "license": "ISC"
+}
