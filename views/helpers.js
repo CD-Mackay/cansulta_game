@@ -1,4 +1,5 @@
 
+/* Constand declarations */
 let game_board = [null, null, null, null, null, null, null, null, null];
 let numTurnsLeft = 9;
 let bluesTurn = true;
@@ -37,9 +38,9 @@ const check_for_winner = () => {
 const turnComplete = () => {
   console.log('running turnComplete function!')
   if (check_for_winner()) {
-    document.getElementById('winner').innerText = ("winner!")
+    document.getElementById('winner').innerText = (`${check_for_winner()} Wins!`)
   }
-}
+};
 
 
 const addPlayerMove = (selected) => {
@@ -59,8 +60,11 @@ const addPlayerMove = (selected) => {
   turnComplete();
 };
 
-window.onload = (event) => {
 
+
+
+/* Window Onload Event! */
+window.onload = (event) => {
   const game_container = document.getElementById("play_area");
 
 
@@ -80,8 +84,23 @@ window.onload = (event) => {
       }
     });
   };
-
+  
+  const reset_board = () => {
+    game_board = [null, null, null, null, null, null, null, null, null];
+    document.getElementById('winner').innerText = "";
+    // game_board.forEach((element, index) => {
+    //   game_container.innerHTML += 
+    //   `<div id="square_${index}" class="game_square" onClick="addPlayerMove(${index})">
+    //     ${game_board[index]}
+    //   </div>`;
+    // })};
+    make_board();
+  }
+ 
 
   make_board();
 };
+
+
+
 
