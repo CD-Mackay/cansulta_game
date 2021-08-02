@@ -5,7 +5,8 @@
 .game_square {
   height: 160px;
   width: 160px;
-  border: 1px solid black;
+  border: 1px solid gray;
+  border-radius: 10px;
 }
 
 .game_square:hover {
