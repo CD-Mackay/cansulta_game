@@ -59,7 +59,7 @@ const addPlayerMove = (selected) => {
     if (bluesTurn) { // If statement properly selects squares depending on player turn
       document.getElementById(`square_${selected}`).classList.add("playerOneSelect")
       bluesTurn = false;
-      document.getElementById('turn_announcer').innerText = "Yellow's turn!"
+      document.getElementById('turn_announcer').innerText = "Yellow's turn!";
     } else {
       bluesTurn = true;
       document.getElementById(`square_${selected}`).classList.add("playerTwoSelect")
@@ -74,7 +74,7 @@ const make_board = (game_container) => {
   }
   game_board.forEach((element, index) => { // Iterate over game_board array to create DOM board
     game_container.innerHTML += 
-    `<div id="square_${index}" class="game_square" onClick="addPlayerMove(${index})">
+    `<div id="square_${index}" class="game_square blue_sq" onClick="addPlayerMove(${index})">
     </div>`;
     if (element == playerOne) { // If statement renders previously selected squares
       document.getElementById(`square_${index}`).classList.add("playerOneSelect")
