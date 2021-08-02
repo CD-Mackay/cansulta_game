@@ -1,8 +1,46 @@
+
 let game_board = [null, null, null, null, null, null, null, null, null];
 let numTurnsLeft = 9;
 let bluesTurn = true;
 const playerOne = "BLUE";
 const playerTwo = "YELLOW";
+
+
+const check_three = (a, b, c) => {
+  if (game_board[a] === playerOne || game_board[a] === playerTwo) {
+    return (game_board[a] == game_board[b] && game_board[b] == game_board[c]);
+  } else {
+    return false;
+  }
+};
+
+const check_for_winner = () => {
+  for (let i = 0; i < 9; i+= 3) {
+    if (check_three(i, i + 1, i + 2)) {
+      return game_board[i]
+    }
+  }
+  for (let i = 0; i < 3; i+= 1) {
+    if (check_three(i, i + 3, i + 6)) {
+      return game_board[i]
+    }
+  }
+  if (check_three(0, 4, 8)) {
+    return game_board[0]
+  }
+  if (check_three(2, 4, 6)) {
+    return game_board[2]
+  }
+  return ""
+};
+
+const turnComplete = () => {
+  console.log('running turnComplete function!')
+  if (check_for_winner()) {
+    document.getElementById('winner').innerText = ("winner!")
+  }
+}
+
 
 const addPlayerMove = (selected) => {
   if (!game_board[selected]) {
@@ -18,6 +56,7 @@ const addPlayerMove = (selected) => {
       document.getElementById(`square_${selected}`).classList.add("playerTwoSelect")
     }
   }
+  turnComplete();
 };
 
 window.onload = (event) => {
