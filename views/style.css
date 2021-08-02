@@ -9,7 +9,7 @@
 }
 
 .game_square:hover {
-  background-color: blue;
+  background-color: gray;
 }
 
 #play_area {
@@ -18,6 +18,14 @@
   height: 500px;
   width: 500px;
   margin: 0 auto;
+}
+
+.playerOneSelect {
+  background-color: blue;
+}
+
+.playerTwoSelect {
+  background-color: yellow;
 }
 
 

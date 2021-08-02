@@ -1,5 +1,3 @@
-
-
 let game_board = [null, null, null, null, null, null, null, null, null];
 let numTurnsLeft = 9;
 let bluesTurn = true;
@@ -10,15 +8,17 @@ const addPlayerMove = (selected) => {
   if (!game_board[selected]) {
     game_board[selected] = bluesTurn ? playerOne : playerTwo;
     console.log(game_board);
+    numTurnsLeft--;
+    console.log(numTurnsLeft);
     if (bluesTurn) {
+      document.getElementById(`square_${selected}`).classList.add("playerOneSelect")
       bluesTurn = false;
     } else {
       bluesTurn = true;
+      document.getElementById(`square_${selected}`).classList.add("playerTwoSelect")
     }
-
   }
 };
-
 
 window.onload = (event) => {
 
@@ -34,8 +34,10 @@ window.onload = (event) => {
       `<div id="square_${index}" class="game_square" onClick="addPlayerMove(${index})">
         ${game_board[index]}
       </div>`;
-      if (element == playerOne || element == playerTwo) {
-        document.getElementById(`square_${index}`).classList.add("selected")
+      if (element == playerOne) {
+        document.getElementById(`square_${index}`).classList.add("playerOneSelect")
+      } else if (element == playerTwo) {
+        document.getElementById(`square_${index}`).classList.add("playerTwoSelect")
       }
     });
   };
