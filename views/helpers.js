@@ -8,7 +8,7 @@ const playerTwo = "YELLOW";
 
 
 
-
+/* Check_three and Check_for_winner iterate over game array looking for three in a row */
 const check_three = (a, b, c) => {
   if (game_board[a] === playerOne || game_board[a] === playerTwo) {
     return (game_board[a] == game_board[b] && game_board[b] == game_board[c]);
@@ -37,7 +37,7 @@ const check_for_winner = () => {
   return ""
 };
 
-const turnComplete = () => {
+const turnComplete = () => { 
   console.log('running turnComplete function!')
   if (check_for_winner()) {
     document.getElementById('winner').innerText = (`${check_for_winner()} Wins!`)
@@ -46,14 +46,13 @@ const turnComplete = () => {
 
 
 const addPlayerMove = (selected) => {
-  if (!game_board[selected]) {
+  if (!game_board[selected]) { // Handle click on unselected squares
     game_board[selected] = bluesTurn ? playerOne : playerTwo;
     numTurnsLeft--;
-    console.log(numTurnsLeft);
   } else if (game_board[selected]) {
-      alert('Square has already been taken!')
+      return alert('Square has already been taken!') // Error message for selected squares
     }
-    if (bluesTurn) {
+    if (bluesTurn) { // If statement properly selects squares depending on player turn
       document.getElementById(`square_${selected}`).classList.add("playerOneSelect")
       bluesTurn = false;
       document.getElementById('turn_announcer').innerText = "Yellow's turn!"
@@ -62,18 +61,18 @@ const addPlayerMove = (selected) => {
       document.getElementById(`square_${selected}`).classList.add("playerTwoSelect")
       document.getElementById('turn_announcer').innerText = "Blue's turn!";
     }
-  turnComplete();
+  turnComplete(); // After each turn, check for winner
 };
 
 const make_board = (game_container) => {
   if (game_container.innerHTML) {
     game_container.innerHTML = "";
   }
-  game_board.forEach((element, index) => {
+  game_board.forEach((element, index) => { // Iterate over game_board array to create DOM board
     game_container.innerHTML += 
     `<div id="square_${index}" class="game_square" onClick="addPlayerMove(${index})">
     </div>`;
-    if (element == playerOne) {
+    if (element == playerOne) { // If statement renders previously selected squares
       document.getElementById(`square_${index}`).classList.add("playerOneSelect")
     } else if (element == playerTwo) {
       document.getElementById(`square_${index}`).classList.add("playerTwoSelect")
@@ -81,7 +80,7 @@ const make_board = (game_container) => {
   });
 };
 
-const reset_board = (game_container) => {
+const reset_board = (game_container) => { // After game, clears scores and re-renders board
   game_board = [null, null, null, null, null, null, null, null, null];
   document.getElementById('winner').innerText = "";
   make_board(game_container);
