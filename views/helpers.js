@@ -20,19 +20,22 @@ const check_three = (a, b, c) => {
 const check_for_winner = () => {
   for (let i = 0; i < 9; i+= 3) {
     if (check_three(i, i + 1, i + 2)) {
-      return game_board[i]
+      return `${game_board[i]} WINS!`
     }
   }
   for (let i = 0; i < 3; i+= 1) {
     if (check_three(i, i + 3, i + 6)) {
-      return game_board[i]
+      return `${game_board[i]} WINS!`
     }
   }
   if (check_three(0, 4, 8)) {
-    return game_board[0]
+    return `${game_board[0]} WINS!`
   }
   if (check_three(2, 4, 6)) {
-    return game_board[2]
+    return `${game_board[2]} WINS!`
+  }
+  if (numTurnsLeft === 0) {
+    return "DRAW!"
   }
   return ""
 };
@@ -40,7 +43,8 @@ const check_for_winner = () => {
 const turnComplete = () => { 
   console.log('running turnComplete function!')
   if (check_for_winner()) {
-    document.getElementById('winner').innerText = (`${check_for_winner()} Wins!`)
+    console.log(check_for_winner())
+    document.getElementById('winner').innerText = (`${check_for_winner()}`)
   }
 };
 
