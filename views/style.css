@@ -8,6 +8,10 @@
   border: 1px solid black;
 }
 
+.game_square:hover {
+  background-color: blue;
+}
+
 #play_area {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
