@@ -17,7 +17,7 @@ button {
   margin: auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: 18px;
 }
 
@@ -33,6 +33,10 @@ button {
 
 .game_square:hover {
   background-color: gray;
+}
+
+i {
+  font-size: 24px;
 }
 
 #play_area {
@@ -56,6 +60,12 @@ button {
   background-color: #EBC94B;
 }
 
+.social-buttons {
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
 @media screen and (min-width: 576px) {
   #play_area {
